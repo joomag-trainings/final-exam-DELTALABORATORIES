@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>SignUp | DELTA</title>
+    <link href="Styles/SignUp_page.css" rel="stylesheet"/>
+    <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Black+Ops+One|Dancing+Script|Playball" rel="stylesheet">
+</head>
+<body>
+<div class="Main">
+<div class="Logo">
+    <img src="Images/Logos/DELTA%20Network-normal.png" class="LogoImage">
+    <p class="LogoText"> DELTA BLOG</p>
+</div>
+<hr class="HR">
+<div class="SignInForm">
+    <div class="SignUp">
+        <hr id="hrShort" />
+        <hr id="hrMiddle" />
+        <hr id="hrLong" />
+        <p class="CreateAccount">
+            LET'S CREATE YOUR ACCOUNT
+        </p>
+        <div class="FormContainer">
+            <form action="PHP/public/index.php/SignUp" method="POST" id="SignUpForm">
+                <input id="InputUsername" type="text" placeholder="      First Name" name="logUpName"/>
+                <div style="margin-top:20px;">
+                    <input class="SignUpInput" type="text" placeholder="      Last Name" name="logUpLastName" id="LastName"/>
+                </div>
+                <p id="UsernameStatus" style="font-size: 16px; color: red;margin:20px"></p>
+                <div style=" margin-top:0;">
+                    <input class="SignUpInput" type="text" placeholder="      Username" name="logUpUsername" id="Username"/>
+                </div>
+                <p id="EmailStatus" style="font-size: 16px; color: red;margin:20px"></p>
+                <div style="margin-top:0;">
+                    <input class="SignUpInput" type="email" placeholder="      Mail" name="logUpEmail" id="Email"/>
+                </div>
+                <div style="margin-top:20px;">
+                    <input class="SignUpInput" type="password" placeholder="      Password" name="logUpPassword" id="password"/>
+                </div>
+                <div style="margin-top:20px; text-align: center">
+                    <div class="g-recaptcha" style="display: inline-block" data-sitekey="6LdurCwUAAAAAFQ54ySrKgZLmM6G3kR-YE-YDjGp"></div>
+                </div>
+                <input id="SignUp" type="submit" value="Sign Up" formmethod="post" />
+            </form>
+        </div>
+        <p class="Register">
+            Copyright © Delta Labs<br />
+        </p>
+    </div>
+</div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src='https://www.google.com/recaptcha/api.js'></script>
+<script src="JavaScript/SignUpHandler.js">
+</script>
+</body>
+</html>

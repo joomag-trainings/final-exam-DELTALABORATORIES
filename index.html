@@ -1,10 +1,42 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
 <head>
-    <meta charset="UTF-8">
-    <title>DELTA | SignIn</title>
+    <meta charset="utf-8" />
+    <title>Sign In | DELTA</title>
+    <link href="Styles/SignIn_page.css" rel="stylesheet" />
+    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Anton|Fresca|Indie+Flower|Montserrat|Poppins" rel="stylesheet">
+    <link rel="icon" href="Images/Logos/DELTA_Network-normal.ico" type="image/x-icon">
 </head>
 <body>
-
+<div class="Main">
+    <div class="col-lg-6 col-md-6 hidden-sm hidden-xs MainLeft">
+        <p class="WelcomeText">
+            WELCOME TO DELTA BLOG
+        </p>
+        <p class="Description">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. <br /><br /><br /> Created By Hovhannes Zohrabyan
+        </p>
+    </div>
+    <div class="col-lg-6 col-md-6 col-sm-12 col-cs-12 MainRight">
+        <div class="SignIn">
+            <img src="Images/Logos/DELTA Network-normal.png" alt="" id="SignInLogo" />
+            <hr id="hrLong"/>
+            <hr id="hrShort"/>
+            <div class="FormContainer">
+                <form action="PHP/public/index.php/SignUp" method="POST">
+                    <input id="InputUsername" type="email" placeholder="      E-Mail" name="logInEMAIL"/>
+                    <div style="margin-top:20px;">
+                        <input id="InputPassword" type="password" placeholder="      Password" name="logInPASSWORD"/>
+                    </div>
+                    <a href="Timeline_page.html"><input id="SignIn" value="Sign In"  /></a>
+                </form>
+            </div>
+            <p class="Register">
+                DO NOT HAVE AN ACCOUNT   <a href="SignUp_page.html" style="margin-left:5px;">SIGN UP</a>
+            </p>
+        </div>
+    </div>
+</div>
 </body>
 </html>
