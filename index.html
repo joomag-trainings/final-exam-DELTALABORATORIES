@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <title>Sign In | DELTA</title>
     <link href="Styles/SignIn_page.css" rel="stylesheet" />
-    <link href="Bootstrap/css/bootstrap.min.css" rel="stylesheet" />
+    <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet" />
     <link href="https://fonts.googleapis.com/css?family=Anton|Fresca|Indie+Flower|Montserrat|Poppins" rel="stylesheet">
     <link rel="icon" href="Images/Logos/DELTA_Network-normal.ico" type="image/x-icon">
 </head>
@@ -24,12 +24,12 @@
             <hr id="hrLong"/>
             <hr id="hrShort"/>
             <div class="FormContainer">
-                <form action="PHP/public/index.php/SignUp" method="POST">
-                    <input id="InputUsername" type="email" placeholder="      E-Mail" name="logInEMAIL"/>
+                <form action="PHP/public/index.php/SignIn" method="POST" id="SignInForm">
+                    <input id="InputUsername" type="email" placeholder="      E-Mail" name="logInEmail"/>
                     <div style="margin-top:20px;">
-                        <input id="InputPassword" type="password" placeholder="      Password" name="logInPASSWORD"/>
+                        <input id="InputPassword" type="password" placeholder="      Password" name="logInPassword"/>
                     </div>
-                    <a href="Timeline_page.html"><input id="SignIn" value="Sign In"  /></a>
+                    <input id="SignIn" value="Sign In" type="submit" />
                 </form>
             </div>
             <p class="Register">
@@ -38,5 +38,7 @@
         </div>
     </div>
 </div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<script src="JavaScript/SignInHandler.js"></script>
 </body>
 </html>

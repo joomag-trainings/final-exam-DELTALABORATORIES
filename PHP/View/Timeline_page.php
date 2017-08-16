@@ -1,16 +1,23 @@
+<?php
+session_start();
+if (!$_SESSION['loggedIn'] == 1){
+ header('Location:../../index.html');
+ die('Here');
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>DELTA | Timeline</title>
-    <link rel="stylesheet" href="Styles/Timeline_page.css">
-    <link rel="stylesheet" href="vendor/bootstrap/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="../../Styles/Timeline_page.css">
+    <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Black+Ops+One|Dancing+Script|Playball" rel="stylesheet">
 </head>
 <body>
     <div class="Main">
         <div class="Navbar">
-            <img src="Images/Logos/DELTA%20Network-inverted.png" class="NavbarLogo">
+            <img src="../../Images/Logos/DELTA%20Network-inverted.png" class="NavbarLogo">
             <p class="NavbarText">
                 DELTA Blog
             </p>
@@ -29,10 +36,12 @@
         </div>
         <div class="col-lg-2 col-ms-2 hidden-sm hidden-xs MainLeft">
             <div class="ProfileData">
-                <img src="Images/Profile_Page/ProfileImage.jpg" class="ProfileImage">
+                <img src="../../<?php echo $_SESSION['profileImage']?>" class="ProfileImage">
                 <div class="ProfileControls">
                     <p class="Name">
-                        Hovhannes Zohrabyan
+                        <?php
+                        echo $_SESSION['name'] . ' ' . $_SESSION['lastName']
+                        ?>
                     </p>
                    <a href="MyBlog_page.html"> <p class="ViewProfile">
                        View Profile ->
@@ -77,7 +86,7 @@
                 <div class="MenuItem">
                     <i class="fa fa-plus-circle fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
                     <p class="MenuItemText">
-                        Make New Post
+                       <a href="MakePost_page.php">Make New Post</a>
                     </p>
                 </div>
             </div>
@@ -91,7 +100,7 @@
                        </p>
                    </div>
                    <div class="PostContent">
-                       <img src="Images/Profile_Page/Image-0.jpeg" class="PostMainImage">
+                       <img src="../../Images/Profile_Page/Image-0.jpeg" class="PostMainImage">
                        <div class="TextContainer">
                            <p class="PostTitle">
                                Post Title

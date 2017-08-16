@@ -20,7 +20,7 @@ class SignUpController
     {
         $this->container = $container;
     }
-    public function test(\Slim\Http\Request $request, Response $SlimResponse){
+    public function SignUpController(\Slim\Http\Request $request, Response $SlimResponse){
         $secret = '6LdurCwUAAAAALu6az4MTzFIG4NlTJVg8l9Hdeqq';
         $response = $_POST['g-recaptcha-response'];
         $remoteip = $_SERVER['REMOTE_ADDR'];

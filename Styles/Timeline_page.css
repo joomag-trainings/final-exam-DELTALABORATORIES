@@ -30,6 +30,10 @@ html, body {
     height: 100%;
     overflow:hidden;
 }
+a {
+    color:white;
+    font-style: normal;
+}
 .Main {
     text-align:center;
     width: 100%;
@@ -152,6 +156,7 @@ html, body {
     letter-spacing: 1px;
     margin-left: 12px;
     margin-top: 4px;
+    cursor:pointer;
 }
 .YourPosts{
     width: 70%;
