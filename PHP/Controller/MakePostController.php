@@ -38,12 +38,13 @@ class MakePostController
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-          $sql = 'INSERT INTO `post_data`(`posters_id`, `posters_name`, `creation_date`, `post_title`, `post_content`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'")';
+          $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'")';
 
           $result = $conn->query($sql);
 
           var_dump($result);
 
+          echo $_POST['post_content'];
           echo \mysqli_error($conn);
           $sql = 'SELECT `post_content` FROM `post_data`';
 

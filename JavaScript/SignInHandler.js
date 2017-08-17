@@ -17,5 +17,9 @@ $('#SignInForm').submit(function (event) {
             $('#InputPassword').css('border', 'solid 1px red');
             event.preventDefault();
         }
+        else if(usernameLenght == 0){
+            $('#InputUsername').css('border', 'solid 1px red');
+            event.preventDefault();
+        }
     }
 })

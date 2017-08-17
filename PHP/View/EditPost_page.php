@@ -1,5 +1,20 @@
 <?php
-    session_start()
+session_start();
+
+require '../config/db.config.php';
+
+$conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` FROM `post_data` WHERE `post_id` = "'. $_POST['edit_post'] .'"';
+$result = $conn->query($sql);
+
+if ($result->num_rows>0){
+    $row = $result->fetch_assoc();
+}
+
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -22,21 +37,23 @@
 <body>
 
 <div class="Main">
-   <?php
+    <?php
     require('presets/navbar.php')
-   ?>
+    ?>
     <div class="col-lg-10 col-md-10 col-sm-12 DivMainRight">
-        <form method="POST" action="../public/index.php/MakePost" id="MakePostForm">
+        <form method="POST" action="../public/index.php/UpdatePost" id="MakePostForm" onsubmit="return confirm('Are you sure you want to update this post?')">
             <h3 style="text-align: left">
                 Choose Title
             </h3>
-            <input class="postHeader" name="post_title" id="post_title"/>
+            <input class="postHeader" name="post_title" id="post_title" value="<?php
+            echo $row['post_title'];
+            ?>"/>
             <textarea id="makePost" name="post_content">
-            <h4>
-                Edit Your Post Here
-            </h4>
+            <?php
+                echo $row['post_content'];
+            ?>
         </textarea>
-            <button class="newPost">Apply</button>
+            <button class="newPost" value="<?php echo $_POST['edit_post'] ?>" name="EditPost">Apply</button>
         </form>
     </div>
 </div>

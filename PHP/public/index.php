@@ -20,5 +20,7 @@ $container = $app->getContainer();
 $app->post('/SignUp', \Conntroller\SignUpController::class .':SignUpController');
 $app->post('/SignIn', \Conntroller\SignInController::class . ':SignInController');
 $app->post('/MakePost', \Conntroller\MakePostController::class . ':MakePostController');
+$app->post('/BloggerSearch', \Conntroller\MakePostController::class . ':MakePostController');
+$app->post('/UpdatePost', \Conntroller\UpdatePostController::class . ':UpdatePostController');
 
 $app->run();

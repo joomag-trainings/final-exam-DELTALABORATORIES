@@ -4,6 +4,16 @@ if (!$_SESSION['loggedIn'] == 1){
  header('Location:../../index.html');
  die('Here');
 }
+
+/*require '../config/db.config.php';
+
+$conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
+
+$sql = "SELECT `name`, `last_name` ,`id` , `registration_date` , `work_place` , `e_mail` , `profile_image_path` FROM `user_data` WHERE `name` = '" . $_POST['bloggerSearch'] . "' || `last_name` = '" . $_POST['bloggerSearch'] . "' ";
+$result = $conn->query($sql);*/
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,81 +26,9 @@ if (!$_SESSION['loggedIn'] == 1){
 </head>
 <body>
     <div class="Main">
-        <div class="Navbar">
-            <img src="../../Images/Logos/DELTA%20Network-inverted.png" class="NavbarLogo">
-            <p class="NavbarText">
-                DELTA Blog
-            </p>
-            <div class="SearchContainer">
-                <form action="PHP/MVC/controller/SearchController.php" method="POST" style="float: right; width: 20%;">
-                    <div class="input-group blogger-search">
-                        <input type="text" class="form-control"  placeholder="Search" >
-                        <span class="input-group-addon">
-                        <button type="submit">
-                            <span class="glyphicon glyphicon-search"></span>
-                        </button>
-                    </span>
-                    </div>
-                </form>
-            </div>
-        </div>
-        <div class="col-lg-2 col-ms-2 hidden-sm hidden-xs MainLeft">
-            <div class="ProfileData">
-                <img src="../../<?php echo $_SESSION['profileImage']?>" class="ProfileImage">
-                <div class="ProfileControls">
-                    <p class="Name">
-                        <?php
-                        echo $_SESSION['name'] . ' ' . $_SESSION['lastName']
-                        ?>
-                    </p>
-                   <a href="MyBlog_page.html"> <p class="ViewProfile">
-                       View Profile ->
-                   </p></a>
-                </div>
-            </div>
-            <div class=Navigation>
-                <p class="NavigationText">
-                    Navigation
-                </p>
-                <hr class="HR"/>
-                <div class="MenuItem">
-                    <i class="fa fa-home fa-2x Icon" aria-hidden="true"></i>
-                    <p class="MenuItemText">
-                        Home Feed
-                    </p>
-                </div>
-                <div class="MenuItem">
-                    <i class="fa fa-bell fa-2x Icon" aria-hidden="true"></i>
-                    <p class="MenuItemText">
-                        Notifications
-                    </p>
-                </div>
-                <div class="MenuItem">
-                    <i class="fa fa-user fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
-                    <p class="MenuItemText">
-                        Following
-                    </p>
-                </div>
-                <div class="MenuItem">
-                    <i class="fa fa-cog fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
-                    <p class="MenuItemText">
-                        Settings
-                    </p>
-                </div>
-            </div>
-            <div class=Navigation>
-                <p class="NavigationText">
-                    Posts
-                </p>
-                <hr class="HR"/>
-                <div class="MenuItem">
-                    <i class="fa fa-plus-circle fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
-                    <p class="MenuItemText">
-                       <a href="MakePost_page.php">Make New Post</a>
-                    </p>
-                </div>
-            </div>
-        </div>
+        <?php
+        require('presets/navbar.php')
+        ?>
         <div class="col-lg-10 col-md-10 col-sm-12 DivMainRight">
            <div class="Posts col-lg-9 col-md-9 col-sm-12 col-xs-12">
                <div class="Post">

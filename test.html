@@ -1,25 +1,17 @@
-
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>DELTA | Timeline</title>
-    <link href="https://fonts.googleapis.com/css?family=Audiowide|Black+Ops+One|Dancing+Script|Playball" rel="stylesheet">
-    <script src='https://cloud.tinymce.com/stable/tinymce.min.js'></script>
-    <script>
-        tinymce.init({
-            selector: '#mytextarea'
-        });
-    </script>
-</head>
-
-<body>
-
-    <form>
-        <textarea id="mytextarea">
-        </textarea>
-    </form>
-
-</textarea>
-</body>
-</html>
+<div class="PostHeader">
+    <p class="PostProfileName">
+        ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
+    </p>
+</div>
+<div class="PostContent">
+    <img src="../../Images/Profile_Page/Image-0.jpeg" class="PostMainImage">
+    <div class="TextContainer">
+        <p class="PostTitle">
+            ' . $row['post_title'] . '
+        </p>
+        <p class="PostText">' . $post_content = substr($row['post_content'], 0 , 60) . '
+        </p>
+        <a href="#" class="btn btn-primary ReadMore">Read More &rarr;</a>
+    </div>
+</div>
+</div>'

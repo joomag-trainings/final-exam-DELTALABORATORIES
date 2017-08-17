@@ -5,6 +5,7 @@
 ::-webkit-scrollbar-thumb {
     background: transparent;
 }
+
 html, body {
     margin: 0;
     padding: 0;
@@ -12,17 +13,21 @@ html, body {
     height: 100%;
     overflow:hidden;
 }
-.DivMainRight{
-    height:100%;
-    background-color: #E0E7ED;
+a {
+    color:white;
+    font-style: normal;
 }
 .Main {
-    text-align: center;
+    text-align:center;
     width: 100%;
     height: 100%;
     overflow: hidden;
-    background: url(../../Images/Profile_Page/pexels-photo.jpg) no-repeat center bottom;
+    background: url(../Images/Login_Page/background-image-2.jpeg) no-repeat center bottom;
     background-size: cover;
+}
+.DivMainRight{
+    height:100%;
+    background-color: #E0E7ED;
 }
 .Navbar{
     width:100%;
@@ -34,7 +39,7 @@ html, body {
     align-items: center;
 }
 .NavbarLogo{
-    width:5%;
+    width:86px;
     height:100%;
     float: left;
 }
@@ -51,7 +56,7 @@ html, body {
     margin-right:15px;
 }
 .blogger-search .input-group-addon{
-    background: white;
+    background: white !important;
 }
 .blogger-search .form-control{
     border-right:0;
@@ -134,31 +139,32 @@ html, body {
     letter-spacing: 1px;
     margin-left: 12px;
     margin-top: 4px;
+    cursor:pointer;
+}
+.YourPosts{
+    width: 70%;
+    position: absolute;
+    margin-top: 24px;
+    min-height: 470px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow:no-display;
 }
 .Post {
-    width: 98%;
+    width: 132%;
     margin: 2% 12.5% 2% 1%;
-    min-height: 150px;
+    height: 230px;
     background-color: whitesmoke;
     overflow: hidden;
     box-shadow: 5px 5px 13px 0px;
 }
-.PostHeader{
-    margin-left:10px;
-    height: 62px;
-    width: 100%;
-    border-bottom: solid 2px #80008c;
-}
-.PostProfileName {
-    margin: 10px 0 0 0;
-    font-size: 25px;
-    font-family: Arial, Helvetica, sans-serif;
-    font-weight:bold;
-    color: #8f928e;
-    float: left;
+.UploadedPhoto {
+    width: 99%;
+    margin-bottom: 8px;
+    margin-top: 8px;
 }
 .PostMainImage{
-    width: 34%;
+    width: 15%;
     float: left;
     margin: 10px;
 }
@@ -174,6 +180,17 @@ html, body {
     width: 63%;
     float: right;
 }
+.PersonalInfo {
+    top: 175px;
+    position: absolute;
+    background-color: white;
+    opacity: 0.8;
+    width: 19%;
+    left: 2.5%;
+    min-height: 450px;
+    text-align: left;
+    padding-left: 2%;
+}
 .PostContent{
     height:247px;
 }
@@ -184,14 +201,6 @@ html, body {
     text-align: left;
     color: #4b4e4a;
 }
-.Posts{
-    height:100%;
-    position: absolute;
-    margin-top:5px;
-    min-height: 470px;
-    overflow-y: scroll;
-    overflow:no-display;
-}
 .ReadMore{
-    float:left;
+    float: left;
 }
