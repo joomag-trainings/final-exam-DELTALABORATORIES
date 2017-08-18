@@ -1,17 +1,17 @@
-<div class="PostHeader">
-    <p class="PostProfileName">
-        ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
-    </p>
-</div>
-<div class="PostContent">
-    <img src="../../Images/Profile_Page/Image-0.jpeg" class="PostMainImage">
-    <div class="TextContainer">
-        <p class="PostTitle">
-            ' . $row['post_title'] . '
+<div class="Post">
+    <div class="PostHeader">
+        <p class="PostProfileName">
+            ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
         </p>
-        <p class="PostText">' . $post_content = substr($row['post_content'], 0 , 60) . '
-        </p>
-        <a href="#" class="btn btn-primary ReadMore">Read More &rarr;</a>
+    </div>
+    <div class="PostContent">
+        <img src="../../'. $row['post_image_path'] .'" class="PostMainImage">
+        <div class="TextContainer">
+            <p class="PostTitle">
+                ' . $row['post_title'] . '
+            </p>
+        </div>
+        <div class="PostText"> ' . $row['post_content'] . '
+        </div>
     </div>
 </div>
-</div>'

@@ -41,13 +41,22 @@ if ($result->num_rows>0){
     require('presets/navbar.php')
     ?>
     <div class="col-lg-10 col-md-10 col-sm-12 DivMainRight">
-        <form method="POST" action="../public/index.php/UpdatePost" id="MakePostForm" onsubmit="return confirm('Are you sure you want to update this post?')">
+        <form method="POST" action="../public/index.php/UpdatePost" id="MakePostForm" onsubmit="return confirm('Are you sure you want to update this post?')" enctype="multipart/form-data">
             <h3 style="text-align: left">
                 Choose Title
             </h3>
             <input class="postHeader" name="post_title" id="post_title" value="<?php
             echo $row['post_title'];
             ?>"/>
+            <h3 style="text-align: left">
+                Choose Image
+            </h3>
+            <div class="btn btn-default image-preview-input" style="width:100%">
+                <input type="file" accept="image/png, image/jpeg, image/gif" name="uploadPicture"/>
+            </div>
+            <h3 style="text-align: left">
+                Create Your Post
+            </h3>
             <textarea id="makePost" name="post_content">
             <?php
                 echo $row['post_content'];

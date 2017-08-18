@@ -4,16 +4,7 @@ if (!$_SESSION['loggedIn'] == 1){
  header('Location:../../index.html');
  die('Here');
 }
-
-/*require '../config/db.config.php';
-
-$conn = new mysqli($dbHost, $dbUser, $dbPass, $dbName);
-if ($conn->connect_error) {
-    die("Connection failed: " . $conn->connect_error);
-}
-
-$sql = "SELECT `name`, `last_name` ,`id` , `registration_date` , `work_place` , `e_mail` , `profile_image_path` FROM `user_data` WHERE `name` = '" . $_POST['bloggerSearch'] . "' || `last_name` = '" . $_POST['bloggerSearch'] . "' ";
-$result = $conn->query($sql);*/
+require '../Model/Timeline_page_model.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -31,26 +22,10 @@ $result = $conn->query($sql);*/
         ?>
         <div class="col-lg-10 col-md-10 col-sm-12 DivMainRight">
            <div class="Posts col-lg-9 col-md-9 col-sm-12 col-xs-12">
-               <div class="Post">
-                   <div class="PostHeader">
-                       <p class="PostProfileName">
-                           Hovhannes Zohrabyan  | Uploaded At 10/06/2017
-                       </p>
-                   </div>
-                   <div class="PostContent">
-                       <img src="../../Images/Profile_Page/Image-0.jpeg" class="PostMainImage">
-                       <div class="TextContainer">
-                           <p class="PostTitle">
-                               Post Title
-                           </p>
-                           <p class="PostText">
-                               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Pellentesque commodo at nisl ut euismod. Aliquam luctus quam in nisi venenatis, ut gravida nisi porta. Suspendisse sed consectetur est. In convallis sem sem. Sed finibus nunc ac nunc lacinia, quis vehicula nibh tristique. Vivamus sit amet tincidunt arcu. Nam sed augue finibus, interdum ipsum faucibus, dapibus arcu. Ut pharetra quam bibendum, vulputate arcu a, ultricies dolor.
-                               Praesent vitae felis vel lorem dignissim laoreet. Maecenas congue neque lacus, id sagittis lorem faucibus a. Fusce tempus varius neque, sit amet tempor tortor. Nulla finibus dictum ligula eget tincidunt.
-                           </p>
-                           <a href="#" class="btn btn-primary ReadMore">Read More &rarr;</a>
-                       </div>
-                   </div>
-               </div>
+               <?php
+                    $Handler = new \Model\Timeline_page_model();
+                    $Handler->Timeline_page();
+               ?>
            </div>
             <div class="Suggestions col-lg-3 col-md-3 hidden-sm hidden-xs">
                 <div class="Header">
@@ -62,7 +37,7 @@ $result = $conn->query($sql);*/
                         <div class="SuggestedPosts">
                             <div class="SuggestedPost">
                                 <div class="ImageContainer">
-                                    <img src="Images/logo.jpg" class="PostImage">
+                                    <img src="../../Images/logo.jpg" class="PostImage">
                                 </div>
                                 <div class="Content">
                                     <p class="ContentText">

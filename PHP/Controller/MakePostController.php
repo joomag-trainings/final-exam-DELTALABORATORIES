@@ -38,21 +38,24 @@ class MakePostController
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-          $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'")';
+
+        $ImageSaver = new ImageUploadController();
+        $ImageSaver->ImageUploadController();
+
+        $imagePath = $ImageSaver->getImagePath();
+
+        if ($imagePath == ''){
+            $imagePath = 'Images/Post_Pictures_default/post_image_deafault.jpg';
+            echo $imagePath;
+        }
+
+
+          $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'","'. $imagePath .'")';
 
           $result = $conn->query($sql);
 
-          var_dump($result);
-
-          echo $_POST['post_content'];
-          echo \mysqli_error($conn);
-          $sql = 'SELECT `post_content` FROM `post_data`';
-
-          $result = $conn->query($sql);
-
-          $row = $result->fetch_assoc();
-
-      echo  '<p>'. htmlentities(stripslashes($row['post_content'])).'</p>';
+          header('Location:../../View/MyBlog_page.php');
+          die('Here');
     }
 
 }

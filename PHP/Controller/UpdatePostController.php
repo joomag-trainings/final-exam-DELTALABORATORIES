@@ -35,11 +35,16 @@ class UpdatePostController
 
         require '../config/db.config.php';
 
+        $ImageSaver = new ImageUploadController();
+        $ImageSaver->ImageUploadController();
+
+        $imagePath = $ImageSaver->getImagePath();
+
         $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = 'UPDATE `post_data` SET `post_title`="'. $_POST['post_title'] .'",`post_content`="'. $_POST['post_content'] .'" WHERE `post_id` = "'. $_POST['EditPost'] .'"';
+        $sql = 'UPDATE `post_data` SET `post_title`="'. $_POST['post_title'] .'",`post_content`="'. $_POST['post_content'] .'", `post_image_path` = "'. $imagePath .'" WHERE `post_id` = "'. $_POST['EditPost'] .'"';
 
         $result = $conn->query($sql);
 

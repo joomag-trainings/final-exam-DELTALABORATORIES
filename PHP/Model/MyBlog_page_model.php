@@ -19,7 +19,6 @@ class MyBlog_page_model
 
     public function getPosts(){
 
-        $Delete = 'Are you Shure that you want to delete this post';
         require '../config/db.config.php';
 
         $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
@@ -27,7 +26,7 @@ class MyBlog_page_model
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` FROM `post_data` WHERE `id` = "'. $_SESSION['id'] .'" ORDER BY `post_id` DESC ';
+        $sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` FROM `post_data` WHERE `id` = "'. $_SESSION['id'] .'" ORDER BY `post_id` DESC ';
         $result = $conn->query($sql);
 
         if($result->num_rows > 0){
@@ -49,14 +48,16 @@ class MyBlog_page_model
                     </form>
                 </div>
                 <div class="PostContent">
-                    <img src="../../Images/Profile_Page/Image-0.jpeg" class="PostMainImage">
+                    <img src="../../'. $row['post_image_path'] .'" class="PostMainImage">
                     <div class="TextContainer">
                         <p class="PostTitle">
                            ' . $row['post_title'] . '
                         </p>
                         <div class="PostText"> ' . $post_content = substr($row['post_content'], 0 , 495) . ' ... ' . '
                         </div>
-                        <a href="#" class="btn btn-primary" style="float: left;">Read More &rarr;</a>
+                         <form action="../View/Post_page.php" method="post">
+                            <button class="btn btn-primary ReadMore" type="submit" name="postID" value="'. $row['post_id'] .'">Read More &rarr;</button>
+                            </form>
                     </div>
                 </div>
             </div>';
