@@ -36,7 +36,7 @@ class MyBlog_page_model
                     <p class="PostProfileName">
                        ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
                     </p>
-                    <form action="../Controller/DeletePost.php" method="POST" onsubmit="return confirm('. "'Are you sure you want to delete this post?'" .')">
+                    <form action="../public/index.php/DeletePost" method="POST" onsubmit="return confirm('. "'Are you sure you want to delete this post?'" .')">
                         <button value="' . $row['post_id'] . '" class="btn btn-danger" name="post_delete" style="margin:15px; float:right">
                             <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                         </button>

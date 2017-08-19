@@ -23,5 +23,9 @@ $app->post('/MakePost', \Conntroller\MakePostController::class . ':MakePostContr
 $app->post('/BloggerSearch', \Conntroller\MakePostController::class . ':MakePostController');
 $app->post('/UpdatePost', \Conntroller\UpdatePostController::class . ':UpdatePostController');
 $app->post('/UpdateAccount', \Conntroller\UpdateAccountController::class . ':UpdateAccount');
+$app->post('/Unfollow', \Conntroller\UnfollowBloggerController::class . ':Unfollow');
+$app->post('/Follow', \Conntroller\FollowBloggerController::class . ':FollowBlogger');
+$app->post('/SignOut', \Conntroller\SignOutController::class . ':SignOut');
+$app->post('/DeletePost', \Conntroller\DeletePostController::class . ':DeletePost');
 
 $app->run();

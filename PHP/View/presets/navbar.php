@@ -162,10 +162,12 @@
             </p>
         </div>
         <div class="MenuItem">
-            <i class="fa fa-user fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
-            <p class="MenuItemText">
-                Following
-            </p>
+            <form action="../View/Following_page.php" method="POST">
+                <i class="fa fa-user fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
+                <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0">
+                     Following
+                </button>
+            </form>
         </div>
         <div class="MenuItem">
             <form action="../View/Settings_page.php">
@@ -176,7 +178,7 @@
             </form>
         </div>
         <div class="MenuItem">
-            <form action="../Controller/SignOutController.php">
+            <form action="../public/index.php/SignOut" method="POST">
                 <i class="fa fa-sign-out fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
                 <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0">
                     Log Out

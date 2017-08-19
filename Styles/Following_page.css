@@ -1,0 +1,210 @@
+/*Font Families*/
+/*font-family: 'Audiowide', cursive;*/
+/*font-family: 'Playball', cursive;*/
+/*font-family: 'Dancing Script', cursive;*/
+/*font-family: 'Black Ops One', cursive;*/
+
+
+/*Animations*/
+
+::-webkit-scrollbar {
+    width: 0;
+    background: transparent;
+}
+::-webkit-scrollbar-thumb {
+    background: transparent;
+}
+
+html, body {
+    margin: 0;
+    padding: 0;
+    width: 100%;
+    height: 100%;
+    overflow:hidden;
+}
+a {
+    color:white;
+    font-style: normal;
+}
+.Main {
+    text-align:center;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-size: cover;
+}
+.DivMainRight{
+    height:100%;
+    background-color: #E0E7ED;
+}
+.YourPosts{
+    width: 70%;
+    position: absolute;
+    margin-top: 24px;
+    min-height: 470px;
+    height: 100%;
+    overflow-y: scroll;
+    overflow:no-display;
+}
+.Post {
+    width: 98%;
+    margin: 2% 12.5% 2% 1%;
+    height: 225px;
+    background-color: whitesmoke;
+    overflow: hidden;
+    box-shadow: 5px 5px 13px 0px;
+}
+.PostHeader{
+    margin-left:10px;
+    height: 62px;
+    width: 100%;
+    border-bottom: solid 2px #80008c;
+}
+
+.PostProfileName {
+    margin: 10px 0 0 0;
+    font-size: 25px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-weight:bold;
+    color: #8f928e;
+    float: left;
+}
+.UploadedPhoto {
+    width: 99%;
+    margin-bottom: 8px;
+    margin-top: 8px;
+}
+.PostMainImage{
+    width: 21%;
+    max-width: 210px;
+    float: left;
+    margin: 10px;
+}
+.PostText{
+    letter-spacing: 1px;
+    text-align: left;
+    font-size: 16px;
+    color: #8f928e;
+    font-family: Arial, Helvetica, sans-serif;
+}
+.TextContainer{
+    margin-top: 10px;
+    width: 63%;
+    float: right;
+}
+.PersonalInfo {
+    top: 175px;
+    position: absolute;
+    background-color: white;
+    opacity: 0.8;
+    width: 19%;
+    left: 2.5%;
+    min-height: 450px;
+    text-align: left;
+    padding-left: 2%;
+}
+.PostContent{
+    height:247px;
+}
+.PostTitle{
+    font-size:22px;
+    font-family:"Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-weight:bold;
+    text-align: left;
+    color: #4b4e4a;
+}
+.ReadMore{
+    float: left;
+}
+.Posts{
+    height:100%;
+    position: absolute;
+    margin-top:5px;
+    min-height: 470px;
+    overflow-y: scroll;
+    overflow:no-display;
+}
+.Suggestions{
+    height:100%;
+}
+.Header{
+    text-align: center;
+    align-items: center;
+    vertical-align: middle;
+    height: 7%;
+}
+.PopularPosts{
+    margin-top:5%;
+    font-size:22px;
+    font-weight: bold;
+    font-family: 'Dancing Script', cursive;
+    color:black;
+}
+.SuggestedPosts{
+    margin-top:4%;
+    height:55%;
+    max-height:320px;
+}
+.SuggestedPost{
+    box-shadow: 0px 0px 5px 0px;
+    margin-top: 10px;
+    width: 86%;
+    height: 42%;
+    background-color: #d9d2d5;
+    display: inline-block;
+}
+.ImageContainer{
+    float: left;
+    width:30%;
+    height:90%;
+    margin-top:5%;
+}
+.PostImage{
+    width: 80%;
+    max-width: 80%;
+}
+.Content{
+    text-align: left;
+    float: left;
+    width:70%;
+    height:90%;
+    margin-top:5%;
+}
+.ContentText{
+    margin-top:10px;
+}
+.RecentPosts{
+    margin-top: 9%;
+    height:100%;
+    max-height:320px;
+}
+.RecentPost{
+    box-shadow: 0px 0px 5px 0px;
+    margin-top: 10px;
+    width: 86%;
+    height: 31%;
+    background-color: #d9d2d5;
+    display: inline-block;
+}
+.blogger-search .input-group-addon{
+    background: white !important;
+}
+.blogger-search .form-control{
+    border-right:0;
+    box-shadow:0 0 0;
+    border-color:#ccc;
+}
+.blogger-search button{
+    border:0;
+    background:transparent;
+}
+.PopularPostsContainer{
+    width:100%;
+    height:405px;
+    background-color: whitesmoke;
+}
+.RecentPostContainer{
+    width:100%;
+    height:405px;
+    background-color: whitesmoke;
+}

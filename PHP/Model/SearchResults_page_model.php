@@ -64,7 +64,7 @@ class SearchResults_page_model
                         <p class="PostText">
                             <strong>Followers:</strong> ' . $followerNumber . '
                         </p>
-                        <form action="../Controller/FollowBloggerController.php" method="POST">
+                        <form action="../public/index.php/Follow" method="POST">
                         <input name="blogger_id" value="' . $row['id'] . '" style="visibility: hidden;"/>
                          <button class="btn btn-primary" style="float: left" type="submit">
                                Follow

@@ -4,14 +4,14 @@ if (!$_SESSION['loggedIn'] == 1){
     header('Location:../../index.html');
     die('Here');
 }
-require '../Model/Timeline_page_model.php';
+require '../Model/Following_page_model.php';
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <title>DELTA | Timeline</title>
-    <link rel="stylesheet" href="../../Styles/Timeline_page.css">
+    <link rel="stylesheet" href="../../Styles/Following_page.css">
     <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css"/>
     <link href="https://fonts.googleapis.com/css?family=Audiowide|Black+Ops+One|Dancing+Script|Playball" rel="stylesheet">
 </head>
@@ -23,8 +23,8 @@ require '../Model/Timeline_page_model.php';
     <div class="col-lg-10 col-md-10 col-sm-12 DivMainRight">
         <div class="Posts col-lg-9 col-md-9 col-sm-12 col-xs-12">
             <?php
-            $Handler = new \Model\Timeline_page_model();
-            $Handler->Timeline_page();
+            $Handler = new \Model\Following_page();
+            $Handler->Following();
             ?>
         </div>
     </div>
