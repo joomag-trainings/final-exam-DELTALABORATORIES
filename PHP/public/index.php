@@ -22,5 +22,6 @@ $app->post('/SignIn', \Conntroller\SignInController::class . ':SignInController'
 $app->post('/MakePost', \Conntroller\MakePostController::class . ':MakePostController');
 $app->post('/BloggerSearch', \Conntroller\MakePostController::class . ':MakePostController');
 $app->post('/UpdatePost', \Conntroller\UpdatePostController::class . ':UpdatePostController');
+$app->post('/UpdateAccount', \Conntroller\UpdateAccountController::class . ':UpdateAccount');
 
 $app->run();

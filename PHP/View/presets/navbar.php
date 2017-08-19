@@ -168,10 +168,12 @@
             </p>
         </div>
         <div class="MenuItem">
-            <i class="fa fa-cog fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
-            <p class="MenuItemText">
-                Settings
-            </p>
+            <form action="../View/Settings_page.php">
+                <i class="fa fa-cog fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
+                <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0" value="<?php echo $_SESSION['id'] ?>">
+                    Settings
+                </button>
+            </form>
         </div>
         <div class="MenuItem">
             <form action="../Controller/SignOutController.php">
