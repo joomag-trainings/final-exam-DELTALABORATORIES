@@ -17,7 +17,6 @@ html, body {
     text-align:center;
     width: 100%;
     height: 100%;
-    overflow: hidden;
     background-size: cover;
 }
 .DivMainRight{
@@ -110,4 +109,50 @@ html, body {
     min-height: 470px;
     overflow-y: scroll;
     overflow:no-display;
+}
+.CommentContainer{
+    width: 98%;
+    height: 600px;
+    background-color: white;
+    display: inline-block;
+    overflow-y: scroll;
+    margin-bottom: 160px;
+}
+.Comment{
+    display: inline-block;
+    width: 92%;
+    margin-top: 25px;
+    min-height: 84px;
+    background-color: #dddbdb;
+}
+.CommentImage{
+    float: left;
+    margin:10px;
+    width:105px;
+}
+.TextArea{
+    width: 88%;
+    background-color: #dddbdb;
+    display: inline-block;
+    margin-top: 15px;
+}
+.CommentName{
+    text-align: left;
+    font-size: 22px;
+    color: #b2b5b8;
+}
+.CommentContent{
+    text-align: left;
+    font-size: 17px;
+    color: #626262;
+}
+#MakePost{
+    width: 98%;
+}
+.ButtonComment{
+    float: left;
+    margin-left:1%;
+}
+#commentHead{
+    margin-left:1%;
 }

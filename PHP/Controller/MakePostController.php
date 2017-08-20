@@ -39,23 +39,46 @@ class MakePostController
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $ImageSaver = new ImageUploadController();
-        $ImageSaver->ImageUploadController();
+        if (isset($_POST['Save'])){
+            $ImageSaver = new ImageUploadController();
+            $ImageSaver->ImageUploadController();
 
-        $imagePath = $ImageSaver->getImagePath();
+            $imagePath = $ImageSaver->getImagePath();
 
-        if ($imagePath == ''){
-            $imagePath = 'Images/Post_Pictures_default/post_image_deafault.jpg';
-            echo $imagePath;
+
+            if ($imagePath == ''){
+                $imagePath = 'Images/Post_Pictures_default/post_image_deafault.jpg';
+                echo $imagePath;
+            }
+
+
+            $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` , `posted`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'","'. $imagePath .'" , 0)';
+
+            $result = $conn->query($sql);
+
+            header('Location:../../View/MyBlog_page.php');
+            die('Here');
+        }
+        else if (isset($_POST['Publish'])) {
+            $ImageSaver = new ImageUploadController();
+            $ImageSaver->ImageUploadController();
+
+            $imagePath = $ImageSaver->getImagePath();
+
+
+            if ($imagePath == ''){
+                $imagePath = 'Images/Post_Pictures_default/post_image_deafault.jpg';
+                echo $imagePath;
+            }
+
+            $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path`, `posted`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'","'. $imagePath .'" , 1)';
+
+            $result = $conn->query($sql);
+
+            header('Location:../../View/MyBlog_page.php');
+            die('Here');
         }
 
-
-          $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'","'. $imagePath .'")';
-
-          $result = $conn->query($sql);
-
-          header('Location:../../View/MyBlog_page.php');
-          die('Here');
     }
-
 }
+

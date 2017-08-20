@@ -26,7 +26,7 @@
     require('presets/navbar.php')
    ?>
     <div class="col-lg-10 col-md-10 col-sm-12 DivMainRight">
-        <form method="POST" action="../public/index.php/MakePost" id="MakePostForm" onsubmit="return confirm('Are you sure you want to publish this post?')" enctype="multipart/form-data">
+        <form method="POST" action="../public/index.php/MakePost" id="MakePostForm" onsubmit="return confirm('Are you sure you want to save this post?')" enctype="multipart/form-data">
             <h3 style="text-align: left">
                 Choose Title
             </h3>
@@ -45,7 +45,8 @@
                 Edit Your Post Here
             </h4>
         </textarea>
-            <button class="newPost">Apply</button>
+            <button class="newPost" name="Save">Save</button>
+            <button class="newPost" value="1" name="Publish" style="margin-left:30px;">Publish</button>
         </form>
     </div>
 </div>

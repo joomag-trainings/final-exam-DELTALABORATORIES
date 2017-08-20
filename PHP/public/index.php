@@ -27,5 +27,8 @@ $app->post('/Unfollow', \Conntroller\UnfollowBloggerController::class . ':Unfoll
 $app->post('/Follow', \Conntroller\FollowBloggerController::class . ':FollowBlogger');
 $app->post('/SignOut', \Conntroller\SignOutController::class . ':SignOut');
 $app->post('/DeletePost', \Conntroller\DeletePostController::class . ':DeletePost');
+$app->post('/PublishPost', \Conntroller\PublishPostController::class . ':PublishPost');
+$app->post('/CommentPost', \Conntroller\MakeCommentController::class. ':MakeComment');
+$app->get('/User/{username}', \Conntroller\GetUserDataController::class . ':getData');
 
 $app->run();

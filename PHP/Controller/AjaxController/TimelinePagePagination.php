@@ -1,33 +1,24 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: death
- * Date: 8/17/2017
- * Time: 6:29 PM
- */
+session_start();
+$limit = intval($_GET['limit']);
+$offset = intval($_GET['offset']);
 
-namespace Model;
+require '../../config/db.config.php';
 
+$conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
 
-class Timeline_page_model
-{
+if ($conn->connect_error) {
+    die("Connection failed: " . $conn->connect_error);
+}
 
-    public function Timeline_page(){
-        require '../config/db.config.php';
+$timelinePosts = 'SELECT * FROM follower_data INNER JOIN post_data ON post_data.id = follower_data.blogger_id && follower_id = "'. $_SESSION['id'] .'" ORDER BY post_data.post_id DESC LIMIT '. $limit .' OFFSET '. $offset .' ';
 
-        $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
+$timelinePostsResult = $conn->query($timelinePosts);
 
-        if ($conn->connect_error) {
-            die("Connection failed: " . $conn->connect_error);
-        }
+if($timelinePostsResult->num_rows > 0) {
 
-        $timelinePosts = 'SELECT * FROM follower_data INNER JOIN post_data ON post_data.id = follower_data.blogger_id && follower_id = "'. $_SESSION['id'] .'" ORDER BY post_data.post_id DESC LIMIT 5';
-
-        $timelinePostsResult = $conn->query($timelinePosts);
-        if($timelinePostsResult->num_rows > 0) {
-
-            while ($row = $timelinePostsResult->fetch_assoc()) {
-                echo '<div class="Post">
+    while ($row = $timelinePostsResult->fetch_assoc()) {
+        echo '<div class="Post">
                    <div class="PostHeader">
                        <p class="PostProfileName">
                            ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
@@ -48,11 +39,8 @@ class Timeline_page_model
                        </div>
                    </div>
                </div>';
-            }
-        }
-        else{
-            echo '<p class="PostText"> You don\'t follow any bloggers <br> Please search and follow to bloggers to see their posts </p>';
-        }
     }
-
+}
+else{
+    echo '<p class="PostText"> You are at the end of your timeline <br> Please search and follow to bloggers to see even more posts </p>';
 }

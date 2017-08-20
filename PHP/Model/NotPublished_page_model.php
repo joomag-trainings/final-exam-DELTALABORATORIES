@@ -9,7 +9,7 @@
 namespace Model;
 
 
-class MyBlog_page_model
+class NotPublished_page_model
 {
     private $posters_name;
     private $creation_date;
@@ -26,7 +26,7 @@ class MyBlog_page_model
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` ,`posted` FROM `post_data` WHERE `id` = "'. $_SESSION['id'] .'" && `posted` = 1 ORDER BY `post_id` DESC ';
+        $sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` ,`posted` FROM `post_data` WHERE `id` = "'. $_SESSION['id'] .'" && `posted` = 0 ORDER BY `post_id` DESC ';
         $result = $conn->query($sql);
 
         if($result->num_rows > 0){
@@ -44,6 +44,11 @@ class MyBlog_page_model
                     <form action="../View/EditPost_page.php" method="POST">
                         <button value="' . $row['post_id'] . '" class="btn" style="margin:15px; margin-right: 0 ; float:right;" name="edit_post">
                             <i class="fa fa-pencil" aria-hidden="true"></i> Edit
+                        </button>
+                    </form>
+                     <form action="../public/index.php/PublishPost" method="POST" onsubmit="return confirm('. "'Are you sure you want to publish this post?'" .')">
+                        <button value="' . $row['post_id'] . '" class="btn btn-primary" name="post_publish" style="margin:15px; float:right">
+                            <i class="fa fa-newspaper-o" aria-hidden="true"></i> Post
                         </button>
                     </form>
                 </div>

@@ -150,22 +150,26 @@
         </p>
         <hr class="HR"/>
         <div class="MenuItem">
-            <i class="fa fa-home fa-2x Icon" aria-hidden="true"></i>
-            <a class="MenuItemText" href="../View/Timeline_page.php">
-                Home Feed
-            </a>
-        </div>
-        <div class="MenuItem">
-            <i class="fa fa-bell fa-2x Icon" aria-hidden="true"></i>
-            <p class="MenuItemText">
-                Notifications
-            </p>
+            <form action="../View/Timeline_page.php" method="POST">
+                <i class="fa fa-home fa-2x Icon" aria-hidden="true"></i>
+                <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0">
+                    Timeline
+                </button>
+            </form>
         </div>
         <div class="MenuItem">
             <form action="../View/Following_page.php" method="POST">
                 <i class="fa fa-user fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
                 <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0">
                      Following
+                </button>
+            </form>
+        </div>
+        <div class="MenuItem">
+            <form action="../View/NotPublished_page.php" method="POST">
+                <i class="fa fa-hdd-o fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
+                <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0">
+                    Not Published
                 </button>
             </form>
         </div>
@@ -192,10 +196,12 @@
         </p>
         <hr class="HR"/>
         <div class="MenuItem">
-            <i class="fa fa-plus-circle fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
-            <p class="MenuItemText">
-                <a href="../View/MakePost_page.php">Make New Post</a>
-            </p>
+            <form action="../View/MakePost_page.php" method="POST">
+                <i class="fa fa-plus-circle fa-2x Icon" aria-hidden="true" style="margin-left: 3px;"></i>
+                <button type="submit" class="MenuItemText" style="background-color: #4A4C59; border: none;margin: 0">
+                    Create new Post
+                </button>
+            </form>
         </div>
     </div>
 </div>

@@ -15,4 +15,10 @@ $('#MakePostForm').submit(function (event) {
             event.preventDefault();
         }
     }
-})
+});
+$(document).ready(function() {
+    $('#Save').click(function () {
+        $('#Save').val('1');
+        console.log('HI')
+    })
+});
