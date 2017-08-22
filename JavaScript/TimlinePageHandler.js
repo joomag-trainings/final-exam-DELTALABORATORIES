@@ -1,25 +1,21 @@
-$(document).ready(function () {
-    alert('documetn Loaded');
-
-});
 
 var offset = 5;
 
 $('.Posts').scroll(function () {
     if($('.Posts').scrollTop() >= $('.Posts')[0].scrollHeight - $('.Posts').height()){
-        alert('At Bottom');
         $.ajax({
-            url: '../Controller/AjaxController/TimelinePagePagination.php',
+            url: '../Controller/AjaxController/TimlinePageHandler.php',
             type: 'GET',
             data: ({
                 'limit':3,
                 'offset': offset
             }),
             success: function (data) {
+                alert('Success');
                 $('.Posts').append(data);
-                console.log(data);
                 offset += 5;
             }
         });
+        event.preventDefault();
     }
 })

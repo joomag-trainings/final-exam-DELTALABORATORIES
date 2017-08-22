@@ -11,7 +11,7 @@ namespace Conntroller;
 use \Slim\Http\Response;
 use \Slim\Container;
 
-class SignInController
+class  SignInController
 {
     /**
      * @var
@@ -29,7 +29,8 @@ class SignInController
         $this->container = $container;
     }
 
-    public function SignInController(\Slim\Http\Request $request, Response $response){
+    public function SignInController(\Slim\Http\Request $request, Response $response)
+    {
         require '../config/db.config.php';
 
         $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
@@ -41,7 +42,7 @@ class SignInController
 
         $result = $conn->query($sql);
 
-        if ($result->num_rows == 0){
+        if ($result->num_rows == 0) {
             echo 'Invalid E-Mail';
         }
 
@@ -50,7 +51,7 @@ class SignInController
         $inputPassword = $_POST['logInPassword'];
 
         var_dump(password_verify($inputPassword, $data['password_hash']));
-        if (password_verify($inputPassword, $data['password_hash']) === true){
+        if (password_verify($inputPassword, $data['password_hash']) === true) {
             session_start();
             $_SESSION['name'] = $data['name'];
             $_SESSION['lastName'] = $data['last_name'];
@@ -60,9 +61,7 @@ class SignInController
             $_SESSION['loggedIn'] = 1;
             header('Location:../../View/Timeline_page.php');
             die('Here');
-        }
-
-        else{
+        } else {
             header('Location:../../../index.html');
             die('Here');
         }

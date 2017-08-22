@@ -31,8 +31,7 @@ class ImageUploadController
 
     public function ImageUploadController()
     {
-        if (file_exists($_FILES['uploadPicture']['tmp_name']))
-        {
+        if (file_exists($_FILES['uploadPicture']['tmp_name'])) {
             $Username = $_SESSION['Username'];
             if (!is_dir("../../Images/" . $Username)) {
                 mkdir('../../Images/' . $Username);

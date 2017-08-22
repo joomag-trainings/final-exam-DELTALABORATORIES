@@ -17,7 +17,7 @@ $settings->replace([
 
 $container = $app->getContainer();
 
-$app->post('/SignUp', \Conntroller\SignUpController::class .':SignUpController');
+$app->post('/SignUp', \Conntroller\SignUpController::class . ':SignUpController');
 $app->post('/SignIn', \Conntroller\SignInController::class . ':SignInController');
 $app->post('/MakePost', \Conntroller\MakePostController::class . ':MakePostController');
 $app->post('/BloggerSearch', \Conntroller\MakePostController::class . ':MakePostController');
@@ -28,7 +28,8 @@ $app->post('/Follow', \Conntroller\FollowBloggerController::class . ':FollowBlog
 $app->post('/SignOut', \Conntroller\SignOutController::class . ':SignOut');
 $app->post('/DeletePost', \Conntroller\DeletePostController::class . ':DeletePost');
 $app->post('/PublishPost', \Conntroller\PublishPostController::class . ':PublishPost');
-$app->post('/CommentPost', \Conntroller\MakeCommentController::class. ':MakeComment');
+$app->post('/CommentPost', \Conntroller\MakeCommentController::class . ':MakeComment');
+$app->post('/DeleteComment', \Conntroller\DeleteCommentController::class . ':DeleteComment');
 $app->get('/User/{username}', \Conntroller\GetUserDataController::class . ':getData');
 
 $app->run();

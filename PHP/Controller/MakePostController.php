@@ -39,6 +39,9 @@ class MakePostController
             die("Connection failed: " . $conn->connect_error);
         }
 
+        $content = filter_var($_POST['post_content'], FILTER_SANITIZE_STRING);
+        $title = filter_var($_POST['post_title'], FILTER_SANITIZE_STRING);
+
         if (isset($_POST['Save'])){
             $ImageSaver = new ImageUploadController();
             $ImageSaver->ImageUploadController();
@@ -51,12 +54,12 @@ class MakePostController
                 echo $imagePath;
             }
 
-
-            $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` , `posted`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'","'. $imagePath .'" , 0)';
+            $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` , `posted`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $title .'",\'"'. $content .'"\',"'. $imagePath .'" , 0)';
 
             $result = $conn->query($sql);
+            echo mysqli_error($conn);
 
-            header('Location:../../View/MyBlog_page.php');
+            header('Location:../../View/NotPublished_page.php');
             die('Here');
         }
         else if (isset($_POST['Publish'])) {
@@ -71,7 +74,7 @@ class MakePostController
                 echo $imagePath;
             }
 
-            $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path`, `posted`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $_POST['post_title'] .'","'. $_POST['post_content'] .'","'. $imagePath .'" , 1)';
+            $sql = 'INSERT INTO `post_data`(`id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path`, `posted`) VALUES ("'. $_SESSION['id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. date("Y-m-d H:i:s")  .'","'. $title .'","'. $content .'","'. $imagePath .'" , 1)';
 
             $result = $conn->query($sql);
 

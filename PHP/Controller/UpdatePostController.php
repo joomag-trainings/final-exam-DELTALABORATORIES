@@ -44,12 +44,30 @@ class UpdatePostController
         if ($conn->connect_error) {
             die("Connection failed: " . $conn->connect_error);
         }
-        $sql = 'UPDATE `post_data` SET `post_title`="'. $_POST['post_title'] .'",`post_content`="'. $_POST['post_content'] .'", `post_image_path` = "'. $imagePath .'" WHERE `post_id` = "'. $_POST['EditPost'] .'"';
 
-        $result = $conn->query($sql);
+        $postTitle = filter_var($_POST['post_title'], FILTER_SANITIZE_STRING);
+        $postContent = filter_var($_POST['post_content'], FILTER_SANITIZE_STRING);
 
-        header("location:../../View/MyBlog_page.php");
-        die('Here');
+        echo $postTitle;
+
+        if (isset($_POST['Save'])){
+            $sql = 'UPDATE `post_data` SET `post_title`="'. $postTitle .'",`post_content`="'. $postContent .'", `post_image_path` = "'. $imagePath .'" WHERE `post_id` = "'. $_POST['Save'] .'"';
+
+            $result = $conn->query($sql);
+
+            header("location:../../View/NotPublished_page.php");
+            die('Here');
+        }
+        elseif (isset($_POST['Publish'])){
+
+            $sql = 'UPDATE `post_data` SET `post_title`="'. $postTitle .'",`post_content`="'. $postContent .'", `post_image_path` = "'. $imagePath .'" , `posted` = 1 WHERE `post_id` = "'. $_POST['Publish'] .'"';
+
+            $result = $conn->query($sql);
+            echo mysqli_error($conn);
+
+            header("location:../../View/MyBlog_page.php");
+            die('Here');
+        }
 
     }
 

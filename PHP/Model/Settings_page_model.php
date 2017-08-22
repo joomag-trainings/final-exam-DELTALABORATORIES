@@ -133,8 +133,8 @@ class Settings_page_model
     }
 
 
-
-    public function AccountSettings (){
+    public function AccountSettings()
+    {
 
         require '../config/db.config.php';
 
@@ -143,7 +143,7 @@ class Settings_page_model
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $getData = 'SELECT `id`,`name`,`last_name`,`username`,`e_mail`,`profile_image_path`,`work_place` FROM `user_data` WHERE `id` = "'. $this->getId() .'"';
+        $getData = 'SELECT `id`,`name`,`last_name`,`username`,`e_mail`,`profile_image_path`,`work_place` FROM `user_data` WHERE `id` = "' . $this->getId() . '"';
 
         $data = $conn->query($getData);
 

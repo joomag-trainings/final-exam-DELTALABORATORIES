@@ -1,16 +1,19 @@
 <?php
-    session_start();
-    require '../Model/User_page_model.php';
-    $Handler = new \Model\User_page_model();
+session_start();
+require '../Model/User_page_model.php';
+$Handler = new \Model\User_page_model();
+$Handler->getUserName();
+$name = $Handler->getRequestedUser();
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>MyBlog | DELTA</title>
-    <link rel="stylesheet" href="../../Styles/MyBlog_page.css" />
+    <title><?php echo $name ?> | DELTA</title>
+    <link rel="stylesheet" href="../../Styles/MyBlog_page.css"/>
     <link rel="stylesheet" href="../../vendor/bootstrap/css/bootstrap.min.css"/>
-    <link href="https://fonts.googleapis.com/css?family=Audiowide|Black+Ops+One|Dancing+Script|Playball" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Audiowide|Black+Ops+One|Dancing+Script|Playball"
+          rel="stylesheet">
 </head>
 <body>
 <div class="Main">

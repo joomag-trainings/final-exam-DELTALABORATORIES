@@ -30,7 +30,8 @@ class SignOutController
         $this->container = $container;
     }
 
-    public function SignOut(){
+    public function SignOut()
+    {
         session_abort();
         session_destroy();
         header('Location:../../../index.html');

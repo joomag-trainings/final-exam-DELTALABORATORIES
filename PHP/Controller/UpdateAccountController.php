@@ -30,7 +30,8 @@ class UpdateAccountController
         $this->container = $container;
     }
 
-    public function UpdateAccount(){
+    public function UpdateAccount()
+    {
 
         session_start();
 
@@ -47,17 +48,16 @@ class UpdateAccountController
         $imagePath = $ImageSaver->getImagePath();
 
 
-        if ($imagePath == ''){
+        if ($imagePath == '') {
             $sql = 'UPDATE `user_data` 
-                SET `name`="'. $_POST['name'] .'",`last_name`="'. $_POST['last_name'] .'", `username` = "'. $_POST['username'] .'" , `work_place` = "'. $_POST['work_place'] .'"
-                WHERE `id` = "'. $_SESSION['id'] .'"';
+                SET `name`="' . $_POST['name'] . '",`last_name`="' . $_POST['last_name'] . '", `username` = "' . $_POST['username'] . '" , `work_place` = "' . $_POST['work_place'] . '"
+                WHERE `id` = "' . $_SESSION['id'] . '"';
 
             $result = $conn->query($sql);
-        }
-        else{
+        } else {
             $sql = 'UPDATE `user_data` 
-                SET `name`="'. $_POST['name'] .'",`last_name`="'. $_POST['last_name'] .'", `username` = "'. $_POST['username'] .'" , `work_place` = "'. $_POST['work_place'] .'",`profile_image_path` = "'. $imagePath .'"
-                WHERE `id` = "'. $_SESSION['id'] .'"';
+                SET `name`="' . $_POST['name'] . '",`last_name`="' . $_POST['last_name'] . '", `username` = "' . $_POST['username'] . '" , `work_place` = "' . $_POST['work_place'] . '",`profile_image_path` = "' . $imagePath . '"
+                WHERE `id` = "' . $_SESSION['id'] . '"';
 
             $result = $conn->query($sql);
         }

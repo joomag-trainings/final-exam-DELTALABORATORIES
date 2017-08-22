@@ -30,7 +30,8 @@ class UnfollowBloggerController
         $this->container = $container;
     }
 
-    public function Unfollow(){
+    public function Unfollow()
+    {
 
         session_start();
         require '../config/db.config.php';
@@ -40,7 +41,7 @@ class UnfollowBloggerController
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = 'DELETE FROM `follower_data` WHERE `follower_id` = "'. $_SESSION['id'] .'" && `blogger_id` = "'. $_POST['blogger_id'] .'"';
+        $sql = 'DELETE FROM `follower_data` WHERE `follower_id` = "' . $_SESSION['id'] . '" && `blogger_id` = "' . $_POST['blogger_id'] . '"';
 
         $result = $conn->query($sql);
 

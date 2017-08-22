@@ -11,7 +11,46 @@ namespace Model;
 
 class User_page_model
 {
-    public function UserPage (){
+    private $requestedUser;
+
+    /**
+     * @return mixed
+     */
+    public function getRequestedUser()
+    {
+        return $this->requestedUser;
+    }
+
+    /**
+     * @param mixed $requestedUser
+     */
+    public function setRequestedUser($requestedUser)
+    {
+        $this->requestedUser = $requestedUser;
+    }
+
+    public function getUserName()
+    {
+        require '../config/db.config.php';
+
+        $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
+        if ($conn->connect_error) {
+            die("Connection failed: " . $conn->connect_error);
+        }
+
+        //Get The User
+
+        $sql = 'SELECT `name` , `last_name` , `username` FROM `user_data` WHERE `id` = "' . $_SESSION['requestedUser'] . '"';
+        $result = $conn->query($sql);
+        $data = $result->fetch_assoc();
+
+        $userName = $data['username'];
+        $this->setRequestedUser($userName);
+
+    }
+
+    public function UserPage()
+    {
 
         require '../config/db.config.php';
 
@@ -22,11 +61,11 @@ class User_page_model
 
         //Get The User
 
-        $sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` FROM `post_data` WHERE `id` = "'. $_SESSION['requestedUser'] .'" ORDER BY `post_id` DESC ';
+        $sql = 'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` FROM `post_data` WHERE `id` = "' . $_SESSION['requestedUser'] . '" ORDER BY `post_id` DESC ';
         $result = $conn->query($sql);
 
-        if($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 echo '<div class="Post">
                 <div class="PostHeader">
                     <p class="PostProfileName">
@@ -34,15 +73,15 @@ class User_page_model
                     </p>
                 </div>
                 <div class="PostContent">
-                    <img src="../../'. $row['post_image_path'] .'" class="PostMainImage">
+                    <img src="../../' . $row['post_image_path'] . '" class="PostMainImage">
                     <div class="TextContainer">
                         <p class="PostTitle">
                            ' . $row['post_title'] . '
                         </p>
-                        <div class="PostText"> ' . $post_content = substr($row['post_content'], 0 , 495) . ' ... ' . '
+                        <div class="PostText"> ' . $post_content = substr($row['post_content'], 0, 495) . ' ... ' . '
                         </div>
                          <form action="../View/Post_page.php" method="post">
-                            <button class="btn btn-primary ReadMore" type="submit" name="postID" value="'. $row['post_id'] .'">Read More &rarr;</button>
+                            <button class="btn btn-primary ReadMore" type="submit" name="postID" value="' . $row['post_id'] . '">Read More &rarr;</button>
                             </form>
                     </div>
                 </div>

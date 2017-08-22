@@ -23,7 +23,8 @@ class DeletePostController
         $this->container = $container;
     }
 
-    public function DeletePost(){
+    public function DeletePost()
+    {
         require '../config/db.config.php';
 
         $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
@@ -31,7 +32,7 @@ class DeletePostController
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql ='DELETE FROM `post_data` WHERE `post_data`.`post_id` = "'. $_POST['post_delete'] .'"';
+        $sql = 'DELETE FROM `post_data` WHERE `post_data`.`post_id` = "' . $_POST['post_delete'] . '"';
         $result = $conn->query($sql);
 
         header('Location:../../View/MyBlog_page.php');

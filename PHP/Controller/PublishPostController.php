@@ -23,7 +23,8 @@ class PublishPostController
         $this->container = $container;
     }
 
-    public function PublishPost(){
+    public function PublishPost()
+    {
         require '../config/db.config.php';
 
         $conn = new \mysqli($dbHost, $dbUser, $dbPass, $dbName);
@@ -31,9 +32,9 @@ class PublishPostController
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql ='UPDATE `post_data`
+        $sql = 'UPDATE `post_data`
                SET `posted`=1
-               WHERE `post_id` = "'. $_POST['post_publish'] .'"';
+               WHERE `post_id` = "' . $_POST['post_publish'] . '"';
         $result = $conn->query($sql);
 
         header('Location:../../View/MyBlog_page.php');

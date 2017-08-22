@@ -28,10 +28,10 @@ class SearchResults_page_model
 
             while ($row = $bloggerDataResult->fetch_assoc()) {
 
-                $followCondition = 'SELECT `follower_id`, `blogger_id` FROM `follower_data` WHERE `follower_id` = "'. $_SESSION['id'] .'" && `blogger_id` = "'. $row['id'] .'"';
+                $followCondition = 'SELECT `follower_id`, `blogger_id` FROM `follower_data` WHERE `follower_id` = "' . $_SESSION['id'] . '" && `blogger_id` = "' . $row['id'] . '"';
                 $followConditionResult = $conn->query($followCondition);
 
-                if ($followConditionResult->num_rows > 0){
+                if ($followConditionResult->num_rows > 0) {
                     $postData = 'SELECT `id` FROM `post_data` WHERE `id` = "' . $row['id'] . '"';
 
                     $postDataResult = $conn->query($postData);
@@ -53,7 +53,7 @@ class SearchResults_page_model
                 <div class="PostContent">
                     <img src="../../' . $row['profile_image_path'] . '" class="PostMainImage">
                     <div class="TextContainer">
-                    <form action="../public/index.php/User/'. $row['username'] .'">
+                    <form action="../public/index.php/User/' . $row['username'] . '">
                         <button class="PostTitle User" type="submit">
                            ' . $row['name'] . ' ' . $row['last_name'] . ' <br>
                         </button>
@@ -78,14 +78,12 @@ class SearchResults_page_model
                         </form>
                     </div>
                 </div>';
-                    }
-                    else {
+                    } else {
                         echo ' <p class="PostText" style="float: none; margin-top:20px;" >
                             <strong>No Bloggers Have Been Found </strong>
                         </p>';
                     }
-                }
-                else {
+                } else {
                     $postData = 'SELECT `id` FROM `post_data` WHERE `id` = "' . $row['id'] . '"';
 
                     $postDataResult = $conn->query($postData);
@@ -107,8 +105,8 @@ class SearchResults_page_model
                 <div class="PostContent">
                     <img src="../../' . $row['profile_image_path'] . '" class="PostMainImage">
                     <div class="TextContainer">
-                    <form action="../public/index.php/User/'. $row['username'] .'">
-                        <button class="PostTitle" id="user" type="submit">
+                    <form action="../public/index.php/User/' . $row['username'] . '">
+                        <button class="PostTitle User" type="submit">
                            ' . $row['name'] . ' ' . $row['last_name'] . ' <br>
                         </button>
                     </form>
@@ -132,14 +130,12 @@ class SearchResults_page_model
                         </form>
                     </div>
                 </div>';
-                    }
-                    else {
+                    } else {
                         echo ' <p class="PostText" style="float: none; margin-top:20px;" >
                             <strong>No Bloggers Have Been Found </strong>
                         </p>';
                     }
                 }
-
 
 
             }

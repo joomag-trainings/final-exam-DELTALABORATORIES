@@ -45,7 +45,7 @@
                 Edit Your Post Here
             </h4>
         </textarea>
-            <button class="newPost" name="Save">Save</button>
+            <button class="newPost" value="0" name="Save">Save</button>
             <button class="newPost" value="1" name="Publish" style="margin-left:30px;">Publish</button>
         </form>
     </div>

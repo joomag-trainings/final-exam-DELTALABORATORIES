@@ -17,7 +17,8 @@ class NotPublished_page_model
     private $post_content;
 
 
-    public function getPosts(){
+    public function getPosts()
+    {
 
         require '../config/db.config.php';
 
@@ -26,17 +27,17 @@ class NotPublished_page_model
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql =  'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` ,`posted` FROM `post_data` WHERE `id` = "'. $_SESSION['id'] .'" && `posted` = 0 ORDER BY `post_id` DESC ';
+        $sql = 'SELECT `post_id`, `id`, `posters_name`, `creation_date`, `post_title`, `post_content` , `post_image_path` ,`posted` FROM `post_data` WHERE `id` = "' . $_SESSION['id'] . '" && `posted` = 0 ORDER BY `post_id` DESC ';
         $result = $conn->query($sql);
 
-        if($result->num_rows > 0){
-            while ($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
                 echo '<div class="Post">
                 <div class="PostHeader">
                     <p class="PostProfileName">
                        ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
                     </p>
-                    <form action="../public/index.php/DeletePost" method="POST" onsubmit="return confirm('. "'Are you sure you want to delete this post?'" .')">
+                    <form action="../public/index.php/DeletePost" method="POST" onsubmit="return confirm(' . "'Are you sure you want to delete this post?'" . ')">
                         <button value="' . $row['post_id'] . '" class="btn btn-danger" name="post_delete" style="margin:15px; float:right">
                             <i class="fa fa-trash-o" aria-hidden="true"></i> Delete
                         </button>
@@ -46,22 +47,22 @@ class NotPublished_page_model
                             <i class="fa fa-pencil" aria-hidden="true"></i> Edit
                         </button>
                     </form>
-                     <form action="../public/index.php/PublishPost" method="POST" onsubmit="return confirm('. "'Are you sure you want to publish this post?'" .')">
+                     <form action="../public/index.php/PublishPost" method="POST" onsubmit="return confirm(' . "'Are you sure you want to publish this post?'" . ')">
                         <button value="' . $row['post_id'] . '" class="btn btn-primary" name="post_publish" style="margin:15px; float:right">
                             <i class="fa fa-newspaper-o" aria-hidden="true"></i> Post
                         </button>
                     </form>
                 </div>
                 <div class="PostContent">
-                    <img src="../../'. $row['post_image_path'] .'" class="PostMainImage">
+                    <img src="../../' . $row['post_image_path'] . '" class="PostMainImage">
                     <div class="TextContainer">
                         <p class="PostTitle">
                            ' . $row['post_title'] . '
                         </p>
-                        <div class="PostText"> ' . $post_content = substr($row['post_content'], 0 , 495) . ' ... ' . '
+                        <div class="PostText"> ' . $post_content = substr($row['post_content'], 0, 495) . ' ... ' . '
                         </div>
                          <form action="../View/Post_page.php" method="post">
-                            <button class="btn btn-primary ReadMore" type="submit" name="postID" value="'. $row['post_id'] .'">Read More &rarr;</button>
+                            <button class="btn btn-primary ReadMore" type="submit" name="postID" value="' . $row['post_id'] . '">Read More &rarr;</button>
                             </form>
                     </div>
                 </div>

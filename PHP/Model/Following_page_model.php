@@ -20,12 +20,12 @@ class Following_page
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $followerData = 'SELECT * FROM follower_data INNER JOIN user_data ON user_data.id = follower_data.blogger_id && follower_id = "'. $_SESSION['id'] .'"';
+        $followerData = 'SELECT * FROM follower_data INNER JOIN user_data ON user_data.id = follower_data.blogger_id && follower_id = "' . $_SESSION['id'] . '"';
 
         $followerDataResult = $conn->query($followerData);
 
-        if($followerDataResult->num_rows > 0){
-            while ($row =$followerDataResult->fetch_assoc()){
+        if ($followerDataResult->num_rows > 0) {
+            while ($row = $followerDataResult->fetch_assoc()) {
                 echo '<div class="Post">
                 <div class="PostContent">
                     <img src="../../' . $row['profile_image_path'] . '" class="PostMainImage">
@@ -47,7 +47,7 @@ class Following_page
                         </p>
                         <form action="../public/index.php/Unfollow" method="POST">
                         <input name="blogger_id" value="' . $row['id'] . '" style="visibility: hidden;"/>
-                         <button class="btn btn-primary" name="blogger_id" style="float: left" type="submit" value="'. $row['id'] .'">
+                         <button class="btn btn-primary" name="blogger_id" style="float: left" type="submit" value="' . $row['id'] . '">
                                Unfollow
                         </button>
                         </form>
@@ -55,8 +55,7 @@ class Following_page
                 </div>
                 </div>';
             }
-        }
-        else{
+        } else {
             echo 'Follow';
         }
     }

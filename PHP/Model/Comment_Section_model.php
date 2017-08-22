@@ -30,7 +30,8 @@ class Comment_Section_model
     }
 
 
-    public function getComments(){
+    public function getComments()
+    {
 
         require '../config/db.config.php';
 
@@ -39,14 +40,14 @@ class Comment_Section_model
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $commentsData = 'SELECT `comment_creator_id`, `refering_post_id`, `comment_id`, `comment_creator_name`, `comment_content` FROM `comment_data` WHERE `refering_post_id` = "'. $this->getPostID() .'" ORDER BY `comment_id` DESC';
+        $commentsData = 'SELECT `comment_creator_id`, `refering_post_id`, `comment_id`, `comment_creator_name`, `comment_content` , `date` FROM `comment_data` WHERE `refering_post_id` = "' . $this->getPostID() . '" ORDER BY `comment_id` DESC';
 
         $result = $conn->query($commentsData);
 
-        if ($result->num_rows > 0){
-            while($row = $result->fetch_assoc()){
+        if ($result->num_rows > 0) {
+            while ($row = $result->fetch_assoc()) {
 
-                $getUserPicture = 'SELECT `profile_image_path` FROM `user_data` WHERE `id` = "'. $row['comment_creator_id'] .'"';
+                $getUserPicture = 'SELECT `profile_image_path` FROM `user_data` WHERE `id` = "' . $row['comment_creator_id'] . '"';
 
                 $userPictureResult = $conn->query($getUserPicture);
 
@@ -54,16 +55,31 @@ class Comment_Section_model
 
                 $UserPicture = $userPictureResult->fetch_assoc();
 
-                echo '<div class="Comment">
-                <img src="../../'. $UserPicture['profile_image_path'] .'" class="CommentImage">
+                if ($_SESSION['id'] == $row['comment_creator_id']) {
+                    echo '<div class="Comment">
+                <img src="../../' . $UserPicture['profile_image_path'] . '" class="CommentImage">
+                <div style="width: 90px;float: right;">
+                <form action="../public/index.php/DeleteComment" method="POST">
+                <button class="btn btn-danger" name="CommentID" value="' . $row['comment_id'] . '">Delete</button>
+                </form>
+                </div>
                 <div class="TextArea">
-                    <p class="CommentName">'. $row['comment_creator_name'] .'</p>
-                    <p class="CommentContent">'. $row['comment_content'] .'</p>
+                    <p class="CommentName">' . $row['comment_creator_name'] . ' | ' . $row['date'] . '</p>
+                    <div class="CommentContent">' . $row['comment_content'] . '</div>
                 </div>
             </div>';
+                } else {
+                    echo '<div class="Comment">
+                <img src="../../' . $UserPicture['profile_image_path'] . '" class="CommentImage">
+                <div class="TextArea">
+                    <p class="CommentName">' . $row['comment_creator_name'] . '</p>
+                    <p class="CommentContent">' . $row['comment_content'] . '</p>
+                </div>
+            </div>';
+                }
+
             }
-        }
-        else{
+        } else {
             echo '<p class="CommentName" style="margin-left:1%">No Comments Have Been Found</p>';
         }
     }

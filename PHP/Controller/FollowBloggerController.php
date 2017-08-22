@@ -16,7 +16,8 @@ class FollowBloggerController
         $this->container = $container;
     }
 
-    public function FollowBlogger(){
+    public function FollowBlogger()
+    {
         session_start();
 
         require '../config/db.config.php';
@@ -26,13 +27,13 @@ class FollowBloggerController
             die("Connection failed: " . $conn->connect_error);
         }
 
-        if($_SESSION['id'] == $_POST['blogger_id'] ){
+        if ($_SESSION['id'] == $_POST['blogger_id']) {
             echo '<script>
-               alert(' . '"You Cannot Follow Yourself"' .');
+               alert(' . '"You Cannot Follow Yourself"' . ');
           </script>';
         }
 
-        $sql = 'INSERT INTO `follower_data`(`follower_id`, `blogger_id`) VALUES ("'. $_SESSION['id'] .'","'. $_POST['blogger_id'] .'")';
+        $sql = 'INSERT INTO `follower_data`(`follower_id`, `blogger_id`) VALUES ("' . $_SESSION['id'] . '","' . $_POST['blogger_id'] . '")';
 
         $result = $conn->query($sql);
 

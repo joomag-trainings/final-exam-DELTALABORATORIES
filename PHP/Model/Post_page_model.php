@@ -41,12 +41,22 @@ class Post_page_model
         $result = $conn->query($sql);
 
         if($result->num_rows > 0){
+
+            $commentNumber = 'SELECT `comment_creator_id`, `refering_post_id`, `comment_id`, `comment_creator_name`, `comment_content` FROM `comment_data` WHERE `refering_post_id` = "'. $this->getPostID() .'"';
+            $commentNumberResult = $conn->query($commentNumber);
+
+            $commentCount = 0;
+
+            while($row1 = $commentNumberResult->fetch_assoc()){
+                $commentCount++;
+            }
+
             $row = $result->fetch_assoc();
 
                 echo '<div class="Post">
     <div class="PostHeader">
         <p class="PostProfileName">
-            ' . $row['posters_name'] . ' | ' . $row['creation_date'] . '
+            ' . $row['posters_name'] . ' | ' . $row['creation_date'] . ' | Comments ' . $commentCount .'
         </p>
     </div>
         <img src="../../'. $row['post_image_path'] .'" class="PostMainImage">

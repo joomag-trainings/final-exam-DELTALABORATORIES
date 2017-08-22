@@ -22,7 +22,8 @@ class MakeCommentController
         $this->container = $container;
     }
 
-    public function MakeComment(){
+    public function MakeComment()
+    {
         session_start();
 
         require '../config/db.config.php';
@@ -32,12 +33,12 @@ class MakeCommentController
             die("Connection failed: " . $conn->connect_error);
         }
 
-        $sql = 'INSERT INTO `comment_data`(`comment_creator_id`, `refering_post_id`, `comment_creator_name`, `comment_content`)
-                VALUES ("'. $_SESSION['id'] .'","'. $_POST['refering_post_id'] .'","'. $_SESSION['name'] . ' ' .$_SESSION['lastName'] .'","'. $_POST['comment_content'] .'")';
+        $sql = 'INSERT INTO `comment_data`(`comment_creator_id`, `refering_post_id`, `comment_creator_name`, `comment_content` , `date`)
+                VALUES ("' . $_SESSION['id'] . '","' . $_POST['refering_post_id'] . '","' . $_SESSION['name'] . ' ' . $_SESSION['lastName'] . '",\'"' . $_POST['comment_content'] . '"\' , "' . date("Y-m-d H:i:s") . '")';
 
         $result = $conn->query($sql);
 
-        header('Location:../../View/Post_page.php');
+        header('Location:../../View/Timeline_page.php');
         die('Here');
     }
 
